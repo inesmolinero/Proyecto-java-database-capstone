@@ -17,14 +17,15 @@ public class ServicioPaciente {
     @Autowired
     private RepositorioDoctor repositorioDoctor;
 
-    public int crearPaciente(Paciente paciente) {
+    public PacienteDTO crearPaciente(PacienteDTO paciente) {
         try {
             // Lógica para crear un paciente
-            repositorioPaciente.save(paciente);
-            return 1;
+            
+            Paciente pacient = repositorioPaciente.save(new Paciente(paciente));
+            return new PacienteDTO(pacient);
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 

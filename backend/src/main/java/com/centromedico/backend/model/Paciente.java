@@ -2,13 +2,17 @@ package com.centromedico.backend.model;
 
 import java.util.Date;
 
+import com.centromedico.backend.DTO.PacienteDTO;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
+@Entity
 public class Paciente {
 
     @Id
@@ -42,6 +46,17 @@ public class Paciente {
         this.email = email;
         this.telefono = telefono;
         this.direccion = direccion;
+    }
+
+    public Paciente(PacienteDTO pacienteDTO) {
+        this.id = pacienteDTO.getId();
+        this.nombre = pacienteDTO.getNombre();
+        this.apellido = pacienteDTO.getApellido();
+        this.fechaNacimiento = pacienteDTO.getFechaNacimiento();
+        this.genero = pacienteDTO.getGenero();
+        this.email = pacienteDTO.getEmail();
+        this.telefono = pacienteDTO.getTelefono();
+        this.direccion = pacienteDTO.getDireccion();
     }
 
     public Long getId() {
