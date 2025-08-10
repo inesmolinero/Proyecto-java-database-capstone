@@ -1,5 +1,6 @@
 package com.centromedico.backend.model;
 
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -8,42 +9,39 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
-public class Doctor {
-
+public class Paciente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotNull
     private String nombre;
-
     @NotNull
     private String apellido;
-
     @NotNull
-    private String especialidad;
-
+    private Date fechaNacimiento;
+    @NotNull
+    private Genero genero;
     @NotNull
     @Email
+    @Column(unique = true)
     private String email;
-
     @Column(unique = true)
     private String telefono;
+    private String direccion;
     
-    private String id_localizacion;
 
-    public Doctor() {
-    }
-
-    public Doctor(String apellido, String email, String especialidad, Long id, String id_localizacion, String nombre, String telefono) {
-        this.apellido = apellido;
-        this.email = email;
-        this.especialidad = especialidad;
+    public Paciente() {
+    }   
+    public Paciente(Long id, @NotNull String nombre, @NotNull String apellido, @NotNull Date fechaNacimiento, @NotNull Genero genero, @NotNull @Email String email, String telefono, String direccion) {
         this.id = id;
-        this.id_localizacion = id_localizacion;
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+        this.email = email;
         this.telefono = telefono;
+        this.direccion = direccion;
     }
 
     public Long getId() {
@@ -70,12 +68,20 @@ public class Doctor {
         this.apellido = apellido;
     }
 
-    public String getEspecialidad() {
-        return especialidad;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
     }
 
     public String getEmail() {
@@ -94,13 +100,12 @@ public class Doctor {
         this.telefono = telefono;
     }
 
-    public String getId_localizacion() {
-        return id_localizacion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setId_localizacion(String id_localizacion) {
-        this.id_localizacion = id_localizacion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
-
 
 }
