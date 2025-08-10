@@ -3,6 +3,7 @@ package com.centromedico.backend.DTO;
 import java.util.Date;
 
 import com.centromedico.backend.model.Genero;
+import com.centromedico.backend.model.Paciente;
 
 
 public class PacienteDTO {
@@ -30,6 +31,16 @@ public class PacienteDTO {
         this.direccion = direccion;
     }
 
+    public PacienteDTO(Paciente paciente) {
+        this.id = paciente.getId();
+        this.nombre = paciente.getNombre();
+        this.apellido = paciente.getApellido();
+        this.fechaNacimiento = paciente.getFechaNacimiento();
+        this.genero = paciente.getGenero();
+        this.email = paciente.getEmail();
+        this.telefono = paciente.getTelefono();
+        this.direccion = paciente.getDireccion();
+    }
     public PacienteDTO() {
     }
 
