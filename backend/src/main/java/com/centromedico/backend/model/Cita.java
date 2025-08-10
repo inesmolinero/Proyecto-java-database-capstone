@@ -24,7 +24,7 @@ public class Cita {
 
     @ManyToOne
     @NotNull
-    private Patient patient;
+    private Paciente paciente;
 
     @Future
     private LocalDateTime fechaHora;
@@ -32,10 +32,10 @@ public class Cita {
     @NotNull
     private int status; // 0: Pendiente, 1: Confirmada, 2: Cancelada
 
-    public Cita(Long id, @NotNull Doctor doctor, @NotNull Patient patient, @Future LocalDateTime fechaHora, @NotNull int status) {
+    public Cita(Long id, @NotNull Doctor doctor, @NotNull Paciente paciente, @Future LocalDateTime fechaHora, @NotNull int status) {
         this.id = id;
         this.doctor = doctor;
-        this.patient = patient;
+        this.paciente = paciente;
         this.fechaHora = fechaHora;
         this.status = status;
     }
@@ -60,12 +60,12 @@ public class Cita {
         this.doctor = doctor;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public Paciente getPaciente() {
+        return paciente;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatient(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public LocalDateTime getFechaHora() {
